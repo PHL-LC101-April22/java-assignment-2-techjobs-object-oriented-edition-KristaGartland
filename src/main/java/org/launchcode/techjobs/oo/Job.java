@@ -1,5 +1,6 @@
 package org.launchcode.techjobs.oo;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 public class Job {
@@ -39,6 +40,39 @@ public class Job {
 
     @Override
     public int hashCode(){return Objects.hash(id);}
+
+    @Override
+    public String toString() {
+
+        if (employer.getValue() == "") {
+            employer.setValue("Data not available");
+        }
+
+        if (positionType.getValue() == ""){
+            positionType.setValue("Data not available");
+        }
+
+        if (name == ""){
+            name = "Data not available";
+        }
+
+        if (location.getValue() == ""){
+            location.setValue("Data not available");
+        }
+
+        if (coreCompetency.getValue() == ""){
+            coreCompetency.setValue("Data not available");
+        }
+         return "\n" +
+                "ID: " + id +
+                 "\nName: " + name
+               + "\nEmployer: " + employer
+                 + "\nLocation: " + location
+                + "\nPosition Type: " + positionType
+                + "\nCore Competency: " + coreCompetency
+                + "\n";
+
+    }
 
 
     public int getId() {

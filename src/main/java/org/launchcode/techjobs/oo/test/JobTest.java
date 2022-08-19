@@ -46,4 +46,27 @@ public class JobTest {
         assertFalse(Bob.equals(bob));
 
     }
+
+    @Test
+    public void testToStringStartsAndEndsWithNewLine(){
+        Job Bob = new Job("Bob", new Employer("Bob"),new Location("Bob"),new PositionType("Bob"),new CoreCompetency("Bob"));
+        assertEquals(Bob.toString().charAt(0), '\n');
+        assertEquals(Bob.toString().charAt(Bob.toString().length() - 1), '\n');
+
+    }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData(){
+        Job Bob = new Job("Bob", new Employer("Bob"),new Location("Bob"),new PositionType("Bob"),new CoreCompetency("Bob"));
+        assertTrue(Bob.toString().contains("Bob"));
+        assertEquals(Bob.toString(), Bob.toString());
+
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField() {
+        Job Bob = new Job("Bob",new Employer(""), new Location(""), new PositionType("Bob"), new CoreCompetency(""));
+        assertTrue(Bob.toString().contains("Data not available"));
+        assertEquals(Bob.toString(), Bob.toString());
+    }
 }
